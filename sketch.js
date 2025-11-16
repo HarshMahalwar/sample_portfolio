@@ -1,7 +1,7 @@
-const gridSize = 5;
-const framesToDraw = 4;
+const gridSize = 3;
+const framesToDraw = 10;
 let zoom = 0;
-const zoomSpeed = 2;
+const zoomSpeed = 10;
 
 const facts = [
   "BTech CSE",
@@ -157,10 +157,10 @@ function renderBackground(t) {
 
 function draw() {
   // update nebula offset/time
-  nebulaOffset += 0.4;
+  nebulaOffset += 4;
 
   // clear GL buffer to dark (will be overlaid by textured plane)
-  background(10, 10, 10);
+  background(10, 10, 10, 1);
 
   // render background graphics (animated)
   renderBackground(nebulaOffset);
@@ -168,7 +168,7 @@ function draw() {
   // draw bgG as a textured plane far behind the cubes so it always looks like background
   push();
   // place plane behind everything; make it very large so it fills view at any FOV
-  translate(0, 0, -5000);
+  translate(0, 0, -7000);
   rotateX(0);
   noStroke();
   texture(bgG);
@@ -176,7 +176,7 @@ function draw() {
   pop();
 
   // interactive camera control (user can orbit after zoom effect)
-  orbitControl();
+  // orbitControl();
 
   // existing cube tunnel / endless zoom code
   let minDim = min(windowWidth, windowHeight);
